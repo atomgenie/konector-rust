@@ -7,6 +7,7 @@ mod github;
 mod init;
 mod service;
 mod ssh;
+mod systemctl;
 mod utils;
 
 #[tokio::main]

@@ -1,6 +1,6 @@
 use clap::{Args, Parser, Subcommand};
 
-use crate::{init, service, utils::types::KonectorResult};
+use crate::{init, service, systemctl, utils::types::KonectorResult};
 
 #[derive(Parser)]
 #[command(author, about, long_about = None)]
@@ -16,6 +16,9 @@ enum Commands {
 
     /// Start the service.
     Service,
+
+    /// Init the systemctl service.
+    InitService(InitServiceArgs),
 }
 
 #[derive(Args)]
@@ -26,6 +29,13 @@ pub struct InitArgs {
     /// Interval to refresh every x minutes.
     #[arg(long, default_value_t = 1)]
     pub interval: u64,
+}
+
+#[derive(Args)]
+pub struct InitServiceArgs {
+    /// Configure to user.
+    #[arg(long)]
+    pub user: Option<String>,
 }
 
 impl Cli {
@@ -39,6 +49,7 @@ impl Commands {
         match self {
             Commands::Init(args) => init::run_init(args).await,
             Commands::Service => service::run().await,
+            Commands::InitService(args) => systemctl::create_service(args).await,
         }
     }
 }
