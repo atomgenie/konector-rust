@@ -11,7 +11,6 @@ pub async fn run() -> KonectorResult {
         let keys: Vec<String> = data.into_iter().map(|data| data.key).collect();
 
         ssh::save_keys(&keys).await?;
-        println!("Saved");
         tokio::time::sleep(Duration::from_secs(wait_minutes * 60)).await;
     }
 }

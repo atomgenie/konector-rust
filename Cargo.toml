@@ -2,6 +2,10 @@
 name = "konector"
 version = "0.1.0"
 edition = "2021"
+authors = ["Tâm-Tanguy <tran@tamtanguy.fr>"]
+description = "Sync GitHub SSH keys with your servers."
+license-file = "LICENSE"
+repository = "https://github.com/atomgenie/konector-rust"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
