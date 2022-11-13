@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Install dependencies (OpenSSL)
-        run: "apt-get install libssl-dev"
+        run: "sudo apt-get install libssl-dev"
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
