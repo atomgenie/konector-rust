@@ -1,0 +1,6 @@
+{
+  "name": "Konector rust",
+  "build": {
+    "dockerfile": "../Dockerfile"
+  }
+}
