@@ -1,6 +1,6 @@
 [package]
 name = "konector"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 authors = ["Tâm-Tanguy <tran@tamtanguy.fr>"]
 description = "Sync GitHub SSH keys with your servers."
