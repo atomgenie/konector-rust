@@ -6,6 +6,12 @@ authors = ["Tâm-Tanguy <tran@tamtanguy.fr>"]
 description = "Sync GitHub SSH keys with your servers."
 license-file = "LICENSE"
 repository = "https://github.com/atomgenie/konector-rust"
+exclude = [
+    ".devcontainer/*",
+    ".vscode/*",
+    "Dockerfile",
+]
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -18,3 +24,4 @@ urlencoding = "2.1"
 futures = "0.3"
 reqwest = { version = "0.11", features = ["native-tls-vendored"] }
 serde_yaml = "0.9"
+
