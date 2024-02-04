@@ -9,11 +9,12 @@ use crate::utils::types::KonectorResult;
 #[derive(Deserialize, Serialize, Debug)]
 pub struct Config {
     pub usernames: Vec<String>,
+    #[serde(rename = "interval_min")]
     pub interval: u64,
 }
 
 const DIR_CONFIG: &str = ".konector";
-const FILE_CONFIG: &str = "config.json";
+const FILE_CONFIG: &str = "config.yaml";
 
 impl Config {
     pub fn new(usernames: &[String], interval: &u64) -> Config {
@@ -39,10 +40,10 @@ impl Config {
         }
 
         let file_path = Config::get_file_config_path()?;
-        let json_data = serde_json::to_string(&self)?;
+        let yaml_data = serde_yaml::to_string(&self)?;
 
         let mut file = tokio::fs::File::create(file_path).await?;
-        file.write(json_data.as_bytes()).await?;
+        file.write(yaml_data.as_bytes()).await?;
         file.sync_all().await?;
 
         Ok(())
@@ -55,7 +56,7 @@ impl Config {
         let mut data = String::new();
         file.read_to_string(&mut data).await?;
 
-        let config: Config = serde_json::from_str(data.as_str())?;
+        let config: Config = serde_yaml::from_str(data.as_str())?;
         Ok(config)
     }
 
